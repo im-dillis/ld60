@@ -13,19 +13,32 @@ script = ExtResource("1_icqy7")
 layout_mode = 2
 name_descriptive = "Cannon"
 card_type = 0
-damage = 5
-attack_speed = 1.0
-range = 3000.0
-projectile_count = 1
-projectile_speed = 5.0
+base_stats = Dictionary[String, float]({
+"attack_speed": 1.0,
+"cooldown_speed": 0.0,
+"damage": 5.0,
+"effect_length": 0.0,
+"effect_modifier": 0.0,
+"health": 0.0,
+"projectile_count": 1.0,
+"projectile_speed": 50.0,
+"range": 3000.0
+})
 
 [node name="AmmoManufacturingCard" parent="." unique_id=1576213921 instance=ExtResource("1_awcqp")]
 layout_mode = 2
 name_descriptive = "Ammo Manufacturing"
 card_type = 1
 description = "Ammo manufacturing tech allows your guns to shoot 1.5 times as fast for 2 seconds every 4 seconds"
-damage = 5
-cooldown_speed = 2
 effect_stat = "attack speed modifier"
-effect_modifier = 1.5
-effect_length = 2.0
+base_stats = Dictionary[String, float]({
+"attack_speed": 0.0,
+"cooldown_speed": 2.0,
+"damage": 0.0,
+"effect_length": 2.0,
+"effect_modifier": 0.5,
+"health": 0.0,
+"projectile_count": 0.0,
+"projectile_speed": 0.0,
+"range": 0.0
+})

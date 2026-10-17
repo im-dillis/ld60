@@ -8,42 +8,55 @@ var active_cards: Dictionary:
 		for ac in active_cards:
 			ac.is_active = false
 		active_cards = value
-		calc_stats()
+		calc_modifiers()
 
 @export var stats: Dictionary = {
-		health = 100,
-		health_modifier = 1,
-		attack_speed_modifier = 1,
-		cooldown_modifer = 1,
-		projectile_count_modifer = 1,
-		projectile_speed_modifer = 1,
-		range_modifier = 1,
-		damage_modifer = 1,
-		effect_length_modifer = 1
+		max_health = 100,
+		current_health = 100,
+		base_health = 100,
+		score = 0
 	}
+
+@export var global_modifiers: Dictionary[String, float] = {
+	health_modifier = 1,
+	bonus_health = 0,
+	damage_modifier = 1,
+	attack_speed_modifier = 1,
+	cooldown_modifier = 1,
+	effect_length_modifier = 1,
+	effect_modifier = 1,
+	projectile_count_modifier = 1,
+	projectile_speed_modifier = 1,
+	range_modifier = 1
+}
 
 func _init() -> void:
-	calc_stats()
+	calc_modifiers()
 
-func calc_stats():
-	stats = {
-		health = 100,
+func calc_modifiers():
+	global_modifiers = {
 		health_modifier = 1,
+		bonus_health = 0,
+		damage_modifier = 1,
 		attack_speed_modifier = 1,
-		cooldown_modifer = 1,
-		projectile_count_modifer = 1,
-		projectile_speed_modifer = 1,
-		range_modifier = 1,
-		damage_modifer = 1,
-		effect_length_modifer = 1
+		cooldown_modifier = 1,
+		effect_length_modifier = 1,
+		effect_modifier = 1,
+		projectile_count_modifier = 1,
+		projectile_speed_modifier = 1,
+		range_modifier = 1
 	}
 	for ac in active_cards:
-		stats.health += ac.health
-		stats.health_modifier += ac.health_modifer
-		stats.attack_speed_modifier += ac.attack_speed_modifer
-		stats.cooldown_modifier += ac.cooldown_modifer
-		stats.projectile_count_modifer += ac.project_count_modifer
-		stats.range_modifier += ac.range_modifer
-		stats.damage_modifer += ac.damage_modifer
-		stats.effect_length_modifer += ac.effect_length_modifer
 		ac.is_active = true
+		global_modifiers.set("health_modifier", (global_modifiers.get("health_modifier") + ac.modifiers.get("health_modifier")))
+		global_modifiers.set("bonus_health", (global_modifiers.get("bonus_health") + ac.modifiers.get("bonus_health")))
+		global_modifiers.set("damage_modifier", (global_modifiers.get("damage_modifier") + ac.modifiers.get("damage_modifier")))
+		global_modifiers.set("attack_speed_modifier", (global_modifiers.get("attack_speed_modifier") + ac.modifiers.get("attack_speed_modifier")))
+		global_modifiers.set("cooldown_modifier", (global_modifiers.get("cooldown_modifier") + ac.modifiers.get("cooldown_modifier")))
+		global_modifiers.set("effect_length_modifier", (global_modifiers.get("effect_length_modifier") + ac.modifiers.get("effect_length_modifier")))
+		global_modifiers.set("effect_modifier", (global_modifiers.get("effect_modifier") + ac.modifiers.get("effect_modifier")))
+		global_modifiers.set("projectile_count_modifier", (global_modifiers.get("projectile_count_modifier") + ac.modifiers.get("projectile_count_modifier")))
+		global_modifiers.set("projectile_speed_modifier", (global_modifiers.get("projectile_speed_modifier") + ac.modifiers.get("projectile_speed_modifier")))
+		global_modifiers.set("range_modifier", (global_modifiers.get("range_modifier") + ac.modifiers.get("range_modifier")))
+		global_modifiers.set("bonus_health", (global_modifiers.get("bonus_health") + ac.modifiers.get("bonus_health")))
+	stats.set("max_health", ((stats.get("base_health") + global_modifiers.get("bonus_health")) * global_modifiers.get("health_modifier")))
