@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://bok8ob2giixh3"]
 
+[sub_resource type="GDScript" id="GDScript_7jktm"]
+script/source = "extends PanelContainer
+
+func _on_play_button_pressed() -> void:
+	WaveController.startGame()
+	visible = false
+"
+
 [node name="MainMenu" type="PanelContainer" unique_id=617484405]
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 139.03497
-offset_right = 236.03503
-grow_horizontal = 2
+offset_right = 97.0
 grow_vertical = 2
+script = SubResource("GDScript_7jktm")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1571757769]
 layout_mode = 2
@@ -34,3 +39,5 @@ layout_mode = 2
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1767009675]
 layout_mode = 2
 text = "PLAY"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

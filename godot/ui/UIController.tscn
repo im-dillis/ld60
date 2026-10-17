@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://55kal78g7n1m"]
 
-[ext_resource type="PackedScene" uid="uid://bok8ob2giixh3" path="res://ui/main_menu.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://bok8ob2giixh3" path="res://ui/main_menu.tscn" id="1_cry6k"]
 
 [node name="UIController" type="Control" unique_id=533847525]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +13,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MainMenu" parent="." unique_id=617484405 instance=ExtResource("1_80nbo")]
-layout_mode = 0
-anchors_preset = 0
+[node name="MainMenu" parent="." unique_id=617484405 instance=ExtResource("1_cry6k")]
+layout_mode = 1
+offset_left = 221.0
+offset_right = 318.0
