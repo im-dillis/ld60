@@ -5,6 +5,12 @@ var enemy_spawn_location: PathFollow2D
 
 var wave: int = 0;
 var enemies: Array = []
+var wave_count: int = 5
+var progress: float :
+	set(value):
+		if value != progress:
+			progress = value
+			print(progress)
 
 func startGame():
 	print("Starting game")
@@ -20,7 +26,7 @@ func waveBreak():
 func waveStart():
 	wave = wave + 1
 	print("wave " + str(wave) + " starting")
-	var wave_count: int = wave * 2
+	wave_count = wave_count + roundi(wave * 1.2 )
 	for wc in wave_count:
 		enemy_spawn_location.progress_ratio = randf()
 		var new_enemy = ENEMY.instantiate()
@@ -28,6 +34,14 @@ func waveStart():
 		add_child(new_enemy)
 		print("Spawning new enemy at " + str(new_enemy.position))
 		enemies.append(new_enemy)
+		new_enemy.enemy_death.connect(_on_enemy_death)
+
+func _on_enemy_death(enemy_path: String):
+	var enemy = get_node(enemy_path)
+	enemies.erase(enemy)
+	if enemies.size() == 0:
+		waveEnd()
 
 func waveEnd():
-	pass
+	print("wave " + str(wave) + " complete")
+	waveBreak()
