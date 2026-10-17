@@ -1,17 +1,10 @@
-[gd_scene format=3 uid="uid://55kal78g7n1m"]
+[gd_scene format=3 uid="uid://b8gr8q55ffuw1"]
 
-[ext_resource type="PackedScene" uid="uid://bok8ob2giixh3" path="res://ui/main_menu.tscn" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://frdu43jt2ihn" path="res://images/city1.svg" id="1_80nbo"]
 
-[node name="Game" type="Control" unique_id=533847525]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Game" type="Node2D" unique_id=397384837]
 
-[node name="MainMenu" parent="." unique_id=617484405 instance=ExtResource("1_80nbo")]
-layout_mode = 0
-anchors_preset = 0
+[node name="City1" type="Sprite2D" parent="." unique_id=1282117836]
+position = Vector2(576, 320)
+scale = Vector2(0.09189816, 0.09189816)
+texture = ExtResource("1_80nbo")
