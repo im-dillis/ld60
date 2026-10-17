@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bcv60ka62d6rh"]
+
+[ext_resource type="Script" uid="uid://biwuy44imlho3" path="res://cards/card.gd" id="1_xtmbf"]
+
+[node name="CannonCard" type="Control" unique_id=121830871]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xtmbf")
+description = "Goes boom"
+is_active = true

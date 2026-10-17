@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bdcn4ngopidaj"]
+
+[ext_resource type="Script" uid="uid://biwuy44imlho3" path="res://cards/card.gd" id="1_2hhab"]
+
+[resource]
+script = ExtResource("1_2hhab")
+name = "Cannon"
+description = "Goes boom"
+metadata/_custom_type_script = "uid://biwuy44imlho3"

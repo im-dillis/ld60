@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cnkf4ggtaix2i"]
+
+[ext_resource type="PackedScene" uid="uid://bcv60ka62d6rh" path="res://cards/card_cannon.tscn" id="1_awcqp"]
+[ext_resource type="Script" uid="uid://cm14k5jbfx1sw" path="res://ui/card_controller.gd" id="1_icqy7"]
+
+[node name="CardController" type="VBoxContainer" unique_id=1741244172]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("1_icqy7")
+
+[node name="CannonCard" parent="." unique_id=121830871 instance=ExtResource("1_awcqp")]
+layout_mode = 2
+name_descriptive = "Cannon"
+card_type = 0
+damage = 5
+attack_speed = 1.0
+range = 3000.0
+projectile_count = 1
+projectile_speed = 5.0
+
+[node name="AmmoManufacturingCard" parent="." unique_id=1576213921 instance=ExtResource("1_awcqp")]
+layout_mode = 2
+name_descriptive = "Ammo Manufacturing"
+card_type = 1
+description = "Ammo manufacturing tech allows your guns to shoot 1.5 times as fast for 2 seconds every 4 seconds"
+damage = 5
+cooldown_speed = 2
+effect_stat = "attack speed modifier"
+effect_modifier = 1.5
+effect_length = 2.0

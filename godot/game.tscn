@@ -11,16 +11,10 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="GDScript" id="GDScript_fc0e3"]
-resource_name = "City"
-script/source = "extends StaticBody2D
-"
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6eae"]
 radius = 82.006096
 
 [node name="Game" type="Node2D" unique_id=397384837]
-position = Vector2(592, 339)
 script = ExtResource("1_feb5d")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=349397619]
@@ -35,9 +29,8 @@ rotation = 0.000860585
 [node name="UIController" parent="Camera2D" unique_id=533847525 instance=ExtResource("2_fc0e3")]
 
 [node name="City" type="StaticBody2D" parent="." unique_id=1204676941]
-script = SubResource("GDScript_fc0e3")
 
-[node name="HealthCollisionShape2D" type="CollisionShape2D" parent="City" unique_id=1393515542]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="City" unique_id=1393515542]
 shape = SubResource("CircleShape2D_g6eae")
 
 [node name="Icon" type="Sprite2D" parent="City" unique_id=1282117836]

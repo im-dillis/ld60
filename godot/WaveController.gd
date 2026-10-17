@@ -3,6 +3,9 @@ extends Node
 const ENEMY = preload("uid://dhxkvefobi744")
 var enemy_spawn_location: PathFollow2D
 
+var city: StaticBody2D
+var closest_enemy: Node
+
 var wave: int = 0;
 var enemies: Array = []
 var wave_count: int = 5
@@ -15,6 +18,7 @@ var progress: float :
 func startGame():
 	print("Starting game")
 	enemy_spawn_location = get_node("/root/Game/Camera2D/EnemyPath/EnemySpawnLocation")
+	city = get_node("/root/Game/City")
 	waveBreak()
 
 func waveBreak():
@@ -35,6 +39,7 @@ func waveStart():
 		print("Spawning new enemy at " + str(new_enemy.position))
 		enemies.append(new_enemy)
 		new_enemy.enemy_death.connect(_on_enemy_death)
+		new_enemy.moved_closer.connect(_on_enemy_moved_closer)
 
 func _on_enemy_death(enemy_path: String):
 	var enemy = get_node(enemy_path)
@@ -42,6 +47,13 @@ func _on_enemy_death(enemy_path: String):
 	if enemies.size() == 0:
 		waveEnd()
 
+func _on_enemy_moved_closer(enemy: Node, distance: float):
+	if closest_enemy == null:
+		closest_enemy = enemy
+		return
+	if closest_enemy.position.distance_to(city.position) > distance:
+		closest_enemy = enemy
+		
 func waveEnd():
 	print("wave " + str(wave) + " complete")
 	waveBreak()
