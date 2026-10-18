@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://frdu43jt2ihn" path="res://images/city1.svg" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://b87fuytunr573" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="Texture2D" uid="uid://e1ym64myh6ab" path="res://images/ring1.svg" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://55kal78g7n1m" path="res://ui/UIController.tscn" id="2_fc0e3"]
 
 [sub_resource type="Curve2D" id="Curve2D_feb5d"]
 _data = {
@@ -18,27 +17,28 @@ radius = 82.006096
 script = ExtResource("1_feb5d")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=349397619]
+position = Vector2(576, 324)
 
-[node name="EnemyPath" type="Path2D" parent="Camera2D" unique_id=1691487827]
+[node name="City" type="StaticBody2D" parent="." unique_id=1204676941]
+position = Vector2(576, 324)
+
+[node name="EnemyPath" type="Path2D" parent="City" unique_id=1691487827]
 curve = SubResource("Curve2D_feb5d")
 
-[node name="EnemySpawnLocation" type="PathFollow2D" parent="Camera2D/EnemyPath" unique_id=1801953544]
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="City/EnemyPath" unique_id=1801953544]
 position = Vector2(-582, -329)
 rotation = 0.000860585
 
-[node name="UIController" parent="Camera2D" unique_id=533847525 instance=ExtResource("2_fc0e3")]
-
-[node name="City" type="StaticBody2D" parent="." unique_id=1204676941]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="City" unique_id=1393515542]
+scale = Vector2(0.58581144, 0.58581144)
 shape = SubResource("CircleShape2D_g6eae")
 
 [node name="Icon" type="Sprite2D" parent="City" unique_id=1282117836]
-scale = Vector2(0.09189816, 0.09189816)
+scale = Vector2(0.053834993, 0.053834993)
 texture = ExtResource("1_80nbo")
 
 [node name="Ring" type="Sprite2D" parent="City" unique_id=1868005387]
 z_index = 2
 rotation = 3.1415927
-scale = Vector2(0.15489861, 0.15489861)
+scale = Vector2(0.09074138, 0.09074138)
 texture = ExtResource("2_e2o6t")

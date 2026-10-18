@@ -17,9 +17,9 @@ var progress: float :
 
 func startGame():
 	print("Starting game")
-	enemy_spawn_location = get_node("/root/Game/Camera2D/EnemyPath/EnemySpawnLocation")
+	enemy_spawn_location = get_node("/root/Game/City/EnemyPath/EnemySpawnLocation")
 	city = get_node("/root/Game/City")
-	waveBreak()
+	waveStart()
 
 func waveBreak():
 	var time: float = 10
@@ -34,7 +34,9 @@ func waveStart():
 	for wc in wave_count:
 		enemy_spawn_location.progress_ratio = randf()
 		var new_enemy = ENEMY.instantiate()
-		new_enemy.position = enemy_spawn_location.position
+		new_enemy.position = enemy_spawn_location.global_position
+		new_enemy.destination = city.global_position
+		new_enemy.city = city
 		add_child(new_enemy)
 		print("Spawning new enemy at " + str(new_enemy.position))
 		enemies.append(new_enemy)
@@ -57,3 +59,11 @@ func _on_enemy_moved_closer(enemy: Node, distance: float):
 func waveEnd():
 	print("wave " + str(wave) + " complete")
 	waveBreak()
+
+func game_over():
+	print("game over :(")
+	city.queue_free()
+	for child in UiController.get_children():
+		child.visible = false
+		if child.name == "GameOver": 
+			child.visible = true

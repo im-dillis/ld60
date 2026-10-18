@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnkf4ggtaix2i"]
 
-[ext_resource type="PackedScene" uid="uid://bcv60ka62d6rh" path="res://cards/card_cannon.tscn" id="1_awcqp"]
+[ext_resource type="PackedScene" uid="uid://bcv60ka62d6rh" path="res://cards/card_template.tscn" id="1_awcqp"]
 [ext_resource type="Script" uid="uid://cm14k5jbfx1sw" path="res://ui/card_controller.gd" id="1_icqy7"]
 
 [node name="CardController" type="VBoxContainer" unique_id=1741244172]
@@ -11,8 +11,8 @@ script = ExtResource("1_icqy7")
 
 [node name="CannonCard" parent="." unique_id=121830871 instance=ExtResource("1_awcqp")]
 layout_mode = 2
-name_descriptive = "Cannon"
-card_type = 0
+name_descriptive = "Laser"
+card_type = "Weapon"
 base_stats = Dictionary[String, float]({
 "attack_speed": 1.0,
 "cooldown_speed": 0.0,
@@ -28,12 +28,12 @@ base_stats = Dictionary[String, float]({
 [node name="AmmoManufacturingCard" parent="." unique_id=1576213921 instance=ExtResource("1_awcqp")]
 layout_mode = 2
 name_descriptive = "Ammo Manufacturing"
-card_type = 1
+card_type = "Modifier"
 description = "Ammo manufacturing tech allows your guns to shoot 1.5 times as fast for 2 seconds every 4 seconds"
 effect_stat = "attack speed modifier"
 base_stats = Dictionary[String, float]({
 "attack_speed": 0.0,
-"cooldown_speed": 2.0,
+"cooldown_speed": 10.0,
 "damage": 0.0,
 "effect_length": 2.0,
 "effect_modifier": 0.5,

@@ -12,10 +12,15 @@ var active_cards: Dictionary:
 
 @export var stats: Dictionary = {
 		max_health = 100,
-		current_health = 100,
 		base_health = 100,
 		score = 0
 	}
+
+@export var current_health: float = 100:
+	set(value):
+		current_health = value
+		if current_health <= 0:
+			WaveController.game_over()
 
 @export var global_modifiers: Dictionary[String, float] = {
 	health_modifier = 1,
